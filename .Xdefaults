@@ -1,0 +1,85 @@
+*foreground: #00cc00
+*foreground_bold: #a8a19f
+*cursor: #a8a19f
+*background:       #1b1918
+!!*background: rgba(0, 0, 0, .7)
+
+!! black
+!*color0: #88807C
+*color0: #766e6b
+*color8: #666666
+!! red
+*color1: #F15D22
+*color9: #CC0000
+!! green
+*color2: #73c48f
+*color10: #4e9a06
+!! yellow
+*color3: #ffce51
+*color11: #c4a000
+!! blue
+*color4: #48B9C7
+*color12: #3465a4
+!! magenta
+*color5: #ad7fa8
+*color13: #75507b
+!! cyan
+*color6: #34e2e2
+*color14: #06989a
+!! white
+*color7: #EEEEEC
+*color15: #D3D7CF
+
+Xcursor.size: 		0
+XTerm*faceName: 	xft:terminus:size=9:antialias=true
+
+URxvt.background:       [80]#000000
+URxvt.depth: 		32
+
+URxvt.intensityStyles:	false
+URxvt.font: 		xft:terminus:size=9
+URxvt.scrollBar:	false
+URxvt.cursorColor:	magenta
+URxvt.saveLines:    	5000
+URxvt.cursorBlink:	true
+
+!! Extensions:
+URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
+URxvt.colorURL:		#4682B4
+!! url-select
+URxvt.keysym.M-u:	perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+!! keyboard-select
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+!! resize-font
+URxvt.resize-font.smaller: C-j
+URxvt.resize-font.bigger:  C-k
+!! matcher
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	1
+
+rofi.color-enabled:	true
+rofi.color-window:	#000, #000, #000
+rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
+rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent:	#002b37, #da4281, #003643, #008ed4, #890661
+
+rofi.fake-transparency:	true
+rofi.lines:		3
+rofi.bw:		0
+rofi.opacity:		"10"
+rofi.hide-scrollbar:	true
+rofi.width:		30
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+XTerm*background: #2b2b2b
+XTerm*foreground: #e7e7e7
+XTerm*pointerColor: #16A085
