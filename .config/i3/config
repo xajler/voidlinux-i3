@@ -1,4 +1,4 @@
-# vim: filetype=i3config
+# vim: filetype=i3
 
 #This is Luke Smith's i3-gaps configuration file.
 #Me: http://lukesmith.xyz
@@ -27,6 +27,8 @@ floating_modifier $mod
 
 
 ###---Starting External Scripts---###
+#Turn off bluetooth by default
+exec --no-startup-id sudo bluetooth off
 #Music player daemon:
 exec --no-startup-id mpd
 # Lock window
@@ -50,6 +52,9 @@ bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_L'
 exec --no-startup-id unclutter
 #Disables touchpad; you might like like this one! (I only use the ThinkPad trackpoint).
 #exec --no-startup-id exec synclient TouchpadOff=1
+
+# Set the background image, using either feh, nitrogen, and/or feh-slides.
+exec $HOME/.bin/feh-slides -i 7 "$FEH_SLIDES" & disown
 
 
 ###---Audio and Music Definitions---###

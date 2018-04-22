@@ -90,6 +90,8 @@ alias cfd="vim ~/.Xdefaults"
 alias dv="setxkbmap dvorak"
 alias la="ls -al"
 alias fake="mono /home/x/src/qualtrak/Fake/tools/FAKE.exe"
+alias hfspmnt="sudo mount -t hfsplus /dev/sdb2 /mnt/usb"
+alias gtmu="cd /mnt/usb;ls -al"
 
 
 export PATH=~/.bin:~/.npm-global/bin:$PATH
@@ -97,3 +99,4 @@ set -o vi
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FEH_SLIDES="$HOME/Pictures/wallpapers"

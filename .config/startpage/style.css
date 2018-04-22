@@ -1,0 +1,27 @@
+body {
+	color: #ddd;
+	background-color: #222
+}
+
+#middle {
+    height: 200px;
+    width: 400px;
+	background-color: rgba(20, 20, 20, 0.9);
+	border-radius: 24px;
+    border-color: #666;
+    border-style: solid;
+    border-width: 1px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+#text-div {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 200px;
+    font-size: 80px;
+    font-family: "Noto Sans",  sans-serif;
+}
