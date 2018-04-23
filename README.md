@@ -11,7 +11,7 @@ Install elementary software
 
     sudo xbps-install -S git vim
     sudo xbps-install -S bash-completion neofetch
-    sudo xbps-install -S tlp powertop hardinfo htop lm_sensors fzf intel-ucode
+    sudo xbps-install -S tlp powertop htop lm_sensors fzf intel-ucode
 
 
 Crete user's folders
