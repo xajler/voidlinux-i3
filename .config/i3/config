@@ -17,48 +17,33 @@ gaps inner 12
 gaps outer 3
 font pango:mono 9
 set $mod Mod4
-set $term urxvt
+set $term --no-startup-id urxvt
 set $video --no-startup-id bash ~/.config/Scripts/video.sh
-set $stoprec --no-startup-id killall ffmpeg & killall screenkey
-set $flash --no-startup-id bash ~/.config/Scripts/flash_win.sh
+set $stoprec --no-startup-id killall ffmpeg
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 
 ###---Starting External Scripts---###
+#Setting the background:
+exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
+#Starts dunst for notifications:
+exec --no-startup-id dunst
 #Turn off bluetooth by default
 exec --no-startup-id sudo bluetooth off
 #Music player daemon:
 exec --no-startup-id mpd
-# Lock window
-exec --no-startup-id xautolock -time 10 -locker blurlock
-#Wifi applet:
-#exec --no-startup-id nm-applet
-#Mount other drives:
-exec --no-startup-id sudo mount -a
 #Composite manager:
-exec --no-startup-id compton --xrender-sync-fence #--xrender-sync 
-#Launch Polybar where appropriate:
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-#Add wallpaper:
-exec --no-startup-id feh --bg-scale ~/.config/wall.png
-#exec_always --no-startup-id wal -c -i ~/.config/wall.png
-#Remaps the caps lock button to escape and uses the dvorak keyboard with dead keys
-exec_always --no-startup-id setxkbmap -layout dvorak -option caps:escape
-
-# Remap Lenovo keys in older laptos Menu button to Meta in newer Print button to Meta
-# This is a hack, first time click tiwce first to execute xmodmap as Menu/Print key, afterwards xmodmap maps to Meta.
-#Remap Menu button to Super (for ThinkPad x220):
-#bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' 
-#Remap PrtSc button to Super (for ThinkPad t440s - for all thinkpads starting with x230, t430 and newer, all having Print key):
-bindsym Print exec --no-startup-id xmodmap -e 'keycode 107 = Super_L'
-
-
+exec --no-startup-id compton --xrender-sync-fence
+#Runs the key remapping scripts
+exec --no-startup-id ~/.scripts/remaps
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
-#Disables touchpad; you might like like this one! (I only use the ThinkPad trackpoint).
-#exec --no-startup-id exec synclient TouchpadOff=1
+# Lock window
+#exec --no-startup-id xautolock -time 10 -locker blurlock
+#Launch Polybar where appropriate:
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Set the background image, using either feh, nitrogen, and/or feh-slides.
 exec $HOME/.bin/feh-slides -i 7 "$FEH_SLIDES" & disown
@@ -144,10 +129,8 @@ bindsym $mod+space		focus mode_toggle
 bindsym $mod+Escape		workspace prev
 bindsym $mod+Shift+Escape 	exec i3-msg exit
 
-bindsym $mod+BackSpace		exec $flash
 bindsym $mod+Shift+BackSpace	exec sudo reboot
 
-bindsym $mod+grave		exec $flash
 #bindsym $mod+asciitilde
 #STOP/HIDE EVERYTHING:
 bindsym $mod+Shift+Delete	exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec $term -e ranger
@@ -157,8 +140,8 @@ bindsym $mod+Shift+Delete	exec $truemute ; exec $truepause ; workspace lmao ; ex
 bindsym $mod+q			kill
 bindsym $mod+Shift+q		kill
 
-bindsym $mod+w			exec --no-startup-id $term -e w3m http://lukesmith.xyz
-bindsym $mod+Shift+w		exec --no-startup-id waterfox
+bindsym $mod+w			exec --no-startup-id $BROWSER
+#bindsym $mod+Shift+w		exec --no-startup-id waterfox
 
 bindsym $mod+e			exec $term -e neomutt
 #bindsym $mod+Shift+e
@@ -218,14 +201,15 @@ bindsym $mod+Shift+z		gaps outer current minus 5
 bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
 bindsym $mod+Shift+x		exec sudo shutdown -h now
 
-bindsym $mod+c			exec $term -e weechat
+#bindsym $mod+c			exec $term -e weechat
+bindsym $mod+c			exec --no-startup-id camtoggle
 #bindsym $mod+Shift+c
 
 bindsym $mod+v			exec urxvt -e vis
 bindsym $mod+Shift+v		exec projectM-pulseaudio
 
 #bindsym $mod+b			exec $prev
-bindsym $mod+Shift+b		exec --no-startup-id blender; workspace $ws6
+bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id bottomleft
 
 bindsym $mod+n			exec $term -e newsboat
 #bindsym $mod+Shift+n		exec $term -e newsboat
@@ -312,6 +296,12 @@ for_window [window_role="tr-main"] move to workspace $ws8
 #for_window [title="projectM"] exec --no-startup-id transset -a --dec .25
 #for_window [class="st"] exec --no-startup-id transset -a --dec .25
 for_window [window_role="GtkFileChooserDialog"] resize shrink height 10 px
+
+# Bindings to make the webcam float and stick.
+#for_window [title="mpvfloat"] floating enable
+#for_window [title="mpvfloat"] sticky enable
+#for_window [title="mpvfloat"] border pixel 0
+#no_focus [title="mpvfloat"]
 
 workspace $ws6 gaps inner 0
 workspace $ws6 gaps outer 0

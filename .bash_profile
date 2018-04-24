@@ -3,7 +3,8 @@
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
 
-
-if [ -z "$DISPLAY" ]; then
-	startx
-fi
+export PATH=$PATH:$HOME/.scripts:$HOME/.bin #:$HOME/.npm-global/bin
+export EDITOR="vim"
+export TERMINAL="urxvt" #"st"
+export FEH_SLIDES="$HOME/Pictures/wallpapers"
+export BROWSER="qutebrowser"

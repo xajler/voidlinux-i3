@@ -65,10 +65,10 @@ Install apps
     sudo xpbs-install -S lxappearance xautolock mupdf cmatrix openvpn terminus-font ncmpcpp
     sudo xbps-install -S font-unifont-bdf font-awesome
     sudo xbps-install -S i3-gaps i3status i3lock i3blocks 
-    sudo xbps-install -S acpi playerctl sysstat tree ImageMagick w3m w3m-img
+    sudo xbps-install -S acpi playerctl sysstat tree ImageMagick w3m w3m-img dunst
     sudo xbps-install -S polybar
-    sudo xbps-install -S xcalib
-    sudo xbps-install -S unclutter
+    sudo xbps-install -S xcalib bind-utils gnumeric
+    sudo xbps-install -S unclutter newsboat
     sudo xbps-install -S noto-fonts-ttf 
     sudo xbps-install -S envypn-font 
     sudo xbps-install -S firefox

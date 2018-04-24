@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script is called by i3 on startup.
+
+
+# Map the caps lock key to super...
+setxkbmap -layout dvorak -option caps:escape
+# If you don't want a us international keyboard, rather whatever keyboard
+# you set in your installation, comment out the above line and uncomment
+# the one below.
+#setxkbmap -option caps:super
+
+# But when it is pressed only once, treat it as escape.
+xcape -e 'Super_L=Escape'
+
+
+# Remap Lenovo keys in older laptos Menu button to Meta in newer Print button to Super
+
+#Remap Menu button to Super (for ThinkPad x220):
+#xmodmap -e 'keycode 135 = Super_L' 
+
+#Remap PrtSc button to Super (for ThinkPad t440s - for all thinkpads starting with x230, t430 and newer, all having Print key):
+xmodmap -e 'keycode 107 = Super_L'
