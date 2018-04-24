@@ -3,6 +3,8 @@
 
 ![void](void.png)
 
+**TODO: This text needs changes**
+
 Update Void Linux
 
     sudo xbps-install -Syu
@@ -21,7 +23,7 @@ Crete user's folders
 Create src folder and clone dotfiles
 
     cd ~/src
-    git clone https://github.com/xajler/voidrice.git
+    git clone https://github.com/xajler/voidlinux-i3.git
 
 
 Create /mnt/usb dir and mount to it
@@ -37,9 +39,10 @@ Copy .ssh and chmod-it
     chmod 600 id_rsa
     chmod 644 id_rsa.pub
 
-Copy .bash and .vim
+Copy dotfiles to home folder
 
-    cp -rf src/voidrice/.bashrc src/voidrice/.vim* src/voidrice/.Xdefaults ~/
+    cp -rf ~/src/voidlinux-i3/* ~/
+    cp -rf ~/src/voidlinux-i3/.* ~/
 
 Install Vim Plugs (inside vim)
 
@@ -57,27 +60,18 @@ Install xorg
 
 Install apps
  
-    sudo xbps-install -S rxvt-unicode ranger qutebrowser calcurse mpd mpc mpv compton htop
+    sudo xbps-install -S rxvt-unicode ranger qutebrowser calcurse mpd mpc mpv compton
     sudo xbps-install -S youtube-dl ffmpeg feh rofi arandr scrot mirage tmux urxvt-perls  
     sudo xpbs-install -S lxappearance xautolock mupdf cmatrix openvpn terminus-font ncmpcpp
     sudo xbps-install -S font-unifont-bdf font-awesome
     sudo xbps-install -S i3-gaps i3status i3lock i3blocks 
-    sudo xbps-install -S acpi playerctl sysstat tree ImageMagick
+    sudo xbps-install -S acpi playerctl sysstat tree ImageMagick w3m w3m-img
     sudo xbps-install -S polybar
     sudo xbps-install -S xcalib
     sudo xbps-install -S unclutter
     sudo xbps-install -S noto-fonts-ttf 
     sudo xbps-install -S envypn-font 
     sudo xbps-install -S firefox
-
-Copy config dotfiles from git
-
-    # Create .config if it is note existing
-    mkdir ~/.config
-    cd ~/src/voidrice/
-    cp -rf .ncmpcpp .xinitrc .calcurse ~/
-    cd ~/src/voidrice/.config/
-    cp -rf * ~/.config/
 
 Add URxvt font resize
 
@@ -92,11 +86,6 @@ Link and start services
     sudo ln -s /etc/sv/tlp /var/service
     sudo ln -s /etc/sv/cgmanager /var/service
     sudo ln -s /etc/sv/consolekit /var/service
-    # use mpd start in i3 config
-    #sudo ln -s /etc/sv/mpd /var/service
-    sudo ln -s /etc/sv/wpa_supplicant /var/service
-    sudo sv status mpd
-    sudo sv up mpd
     reboot # easier than up all
 
 WiFi config (WPA)
@@ -196,6 +185,14 @@ Test sound with speakers and headphones
 
     # unmute muted devices
     pavucontrol 
+
+Sound problems mulitpile card
+
+    # Create alsa-base.conf if not existed
+    sudo vim  /etc/modprobe.d/alsa-base.conf
+
+    # Add this content int o alsa-base.conf (swaps sound cards, so 1 is defaust)
+    options snd_hda_intel index=1,0
 
 Test urxvt font
 
