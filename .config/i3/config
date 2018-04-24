@@ -46,8 +46,15 @@ exec --no-startup-id feh --bg-scale ~/.config/wall.png
 #exec_always --no-startup-id wal -c -i ~/.config/wall.png
 #Remaps the caps lock button to escape and uses the dvorak keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout dvorak -option caps:escape
-#Remap Menu button to Super:
-bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' 
+
+# Remap Lenovo keys in older laptos Menu button to Meta in newer Print button to Meta
+# This is a hack, first time click tiwce first to execute xmodmap as Menu/Print key, afterwards xmodmap maps to Meta.
+#Remap Menu button to Super (for ThinkPad x220):
+#bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_L' 
+#Remap PrtSc button to Super (for ThinkPad t440s - for all thinkpads starting with x230, t430 and newer, all having Print key):
+bindsym Print exec --no-startup-id xmodmap -e 'keycode 107 = Super_L'
+
+
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 #Disables touchpad; you might like like this one! (I only use the ThinkPad trackpoint).
@@ -372,8 +379,8 @@ bindsym $mod+Shift+bracketright exec $bigfor
 
 #Print screen takes a screenshot.
 #With shift, it takes one only of the given window.
-bindsym Print			exec --no-startup-id i3-scrot 
-bindsym Shift+Print 		exec --no-startup-id scrot -u
+#bindsym Print			exec --no-startup-id i3-scrot 
+#bindsym Shift+Print 		exec --no-startup-id scrot -u
 
 #For recording audio/video or stop recording. Also screenkey for visual typing.
 bindsym $mod+Print		exec --no-startup-id screenkey
