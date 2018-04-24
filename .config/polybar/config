@@ -71,10 +71,10 @@ font-2 = fontawesome:pixelsize=8;1
 
 modules-left = i3 mpd
 modules-center = date
-; For partition with home and root
-;modules-right = filesystem pkg hwmon volume vpncheck battery 
+; For partition with home and root with or without battery1
+;modules-right = filesystem pkg hwmon volume vpncheck battery # battery1
 ; For single root partition
-modules-right = filesystem pkg hwmon volume vpncheck battery 
+modules-right = filesystem pkg hwmon volume vpncheck battery battery1
 
 tray-position = right
 tray-padding = 0
@@ -337,6 +337,40 @@ mapping = true
 [module/battery]
 type = internal/battery
 battery = BAT0
+adapter = ADP1
+full-at = 100
+
+#format-charging = Charging... <label-charging>
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${xrdb:color3}
+
+format-discharging = <label-discharging> 
+#format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full = " "
+;format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${colors.green}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
 adapter = ADP1
 full-at = 100
 
