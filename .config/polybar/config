@@ -11,7 +11,7 @@
 [colors]
 ;background = ${xrdb:color0}
 background = #1b1918
-background-alt = #88807c 
+background-alt = #88807c
 foreground = ${xrdb:color7}
 ;foreground = #dfdfdf
 foreground-alt = #555
@@ -42,7 +42,7 @@ fixed-center = true
 bottom = false
 
 #background = ${colors.background}
-background = #661b1918 
+background = #661b1918
 #foreground = ${colors.foreground}
 foreground = #90d0bb
 ;70d89a
@@ -202,7 +202,7 @@ icon-next = 
 #icon-stop = X
 #icon-play-prefix = #f00
 #icon-play = (Paused)
-#icon-pause = 
+#icon-pause =
 #icon-next = ->
 
 ;bar-progress-width = 45
@@ -247,7 +247,7 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " " 
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${xrdb:color6}
 label = %percentage_used%%
@@ -338,13 +338,13 @@ mapping = true
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 100
+full-at = 98
 
 #format-charging = Charging... <label-charging>
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${xrdb:color3}
 
-format-discharging = <label-discharging> 
+format-discharging = <label-discharging>
 #format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
@@ -372,13 +372,13 @@ animation-charging-framerate = 750
 type = internal/battery
 battery = BAT1
 adapter = ADP1
-full-at = 100
+full-at = 98
 
 #format-charging = Charging... <label-charging>
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${xrdb:color3}
 
-format-discharging = <label-discharging> 
+format-discharging = <label-discharging>
 #format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
@@ -427,38 +427,12 @@ hwmon-path = /sys/class/hwmon/hwmon0/temp2_input
 [module/hwmon]
 type = custom/script
 exec = ~/.config/polybar/temp.sh
-#exec = cat /sys/class/hwmon/hwmon1/temp2_input  | awk '{print substr($1, 1, 2) "°C"}' 
+#exec = cat /sys/class/hwmon/hwmon1/temp2_input  | awk '{print substr($1, 1, 2) "°C"}'
 interval = 2
 
 format-prefix = " "
 format-underline = ${xrdb:color1}
 
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true

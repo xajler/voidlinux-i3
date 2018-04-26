@@ -35,7 +35,7 @@ Copy .ssh and chmod-it
 
     cp -rf /mnt/usb/.ssh/ ~/
     cd ~/.ssh/
-    rm known_hosts 
+    rm known_hosts
     chmod 600 id_rsa
     chmod 644 id_rsa.pub
 
@@ -50,35 +50,43 @@ Install Vim Plugs (inside vim)
 
 Install sound
 
-    sudo xbps-install -S alsa-utils alsa-plugins alsa-lib alsa-firmware 
+    sudo xbps-install -S alsa-utils alsa-plugins alsa-lib alsa-firmware
     sudo xbps-install -S alsa-utils pulseaudio ConsoleKit2 pavucontrol
- 
-Install xorg 
+
+Install xorg
 
     sudo xbps-install -S xorg-server xorg-apps xorg-minimal xinit xterm
     sudo xbps-install -S xf86-video-intel xf86-input-libinput
 
 Install apps
- 
+
     sudo xbps-install -S rxvt-unicode ranger qutebrowser calcurse mpd mpc mpv compton
-    sudo xbps-install -S youtube-dl ffmpeg feh rofi arandr scrot mirage tmux urxvt-perls  
+    sudo xbps-install -S youtube-dl ffmpeg feh rofi arandr scrot mirage tmux urxvt-perls
     sudo xpbs-install -S lxappearance xautolock mupdf cmatrix openvpn terminus-font ncmpcpp
     sudo xbps-install -S font-unifont-bdf font-awesome
-    sudo xbps-install -S i3-gaps i3status i3lock i3blocks 
+    sudo xbps-install -S i3-gaps i3status i3lock i3blocks
     sudo xbps-install -S acpi playerctl sysstat tree ImageMagick w3m w3m-img dunst
     sudo xbps-install -S polybar
     sudo xbps-install -S xcalib bind-utils gnumeric
-    sudo xbps-install -S unclutter newsboat
-    sudo xbps-install -S noto-fonts-ttf 
-    sudo xbps-install -S envypn-font 
+    sudo xbps-install -S unclutter newsboat xclip
+    sudo xbps-install -S noto-fonts-ttf liberation-fonts-ttf
+    sudo xbps-install -S envypn-font
     sudo xbps-install -S firefox
+    sudo xbps-install -S wget curl urlview
+    # For compiling in general
+    sudo xbps-install -S base-devel
+    # For compiling st
+    sudo xbps-install -S fontconfig-devel libX11-devel libXft-devel
+
+    # Suggestions by tlp
+    sudo xbps-install -S acpi_call-dkms smartmontools
 
 Add URxvt font resize
 
     cd ~/src
     git clone https://github.com/simmel/urxvt-resize-font
     sudo cp ~/src/urxvt-resize-font/resize-font /usr/lib/urxvt/perl
-    
+
 Link and start services
 
     la /var/service
@@ -91,9 +99,9 @@ Link and start services
 WiFi config (WPA)
 
     # enter root
-    su 
-    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wlp3s0.conf 
-    wpa_passphrase <SSID> <password> >> /etc/wpa_supplicant/wpa_supplicant-wlp3s0.conf 
+    su
+    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wlp3s0.conf
+    wpa_passphrase <SSID> <password> >> /etc/wpa_supplicant/wpa_supplicant-wlp3s0.conf
 
     # test confing
     wpa_supplicant -i wlp3s0 -c /etc/wpa_supplicant/wpa_supplicant-wlp3s0.conf
@@ -116,8 +124,8 @@ Multiple WiFi networks (WPA)
 WiFi WEP notes
 
     # enter root
-    su 
-    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf 
+    su
+    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf
     sudo vim /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf
     # Add this text and change SSID and Wep key:
     network={
@@ -132,15 +140,15 @@ Temporary WiFi config (WPA)
 
     sudo sv stop wpa_supplicant
     # enter root
-    su 
-    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf 
-    wpa_passphrase <SSID> <password> >> /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf 
+    su
+    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf
+    wpa_passphrase <SSID> <password> >> /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf
 
     # Run and connect
     wpa_supplicant -i wlp3s0 -c /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf &
-    
 
-ProtonVPN 
+
+ProtonVPN
 
     # Create dir for openvpn cilent
     sudo mkdir -p /etc/openvpn/client
@@ -153,7 +161,7 @@ ProtonVPN
     # Make this file only readable by root
     sudo chmod 600 /etc/openvpn/client/login.conf
 
-    # Copy all ProtonVPN .ovpn to openvpn client    
+    # Copy all ProtonVPN .ovpn to openvpn client
     sudo cp ~/Downloads/*.ovpn /etc/openvpn/client
 
 Patch ProtonVPN ovpn's
@@ -173,18 +181,18 @@ Create ProtonVPN runit services
     # TODO
 
 Bluetooh
-    
+
     sudo xbps-install -S bluez
     # Turn off bluetooth, use 'on' to turn it  on
-    sudo bluetooth off 
+    sudo bluetooth off
 
 Test sound with speakers and headphones
 
     # make sure nothing is at 0 or use pavucontrol
-    alsamixer 
+    alsamixer
 
     # unmute muted devices
-    pavucontrol 
+    pavucontrol
 
 Sound problems mulitpile card
 
@@ -202,6 +210,6 @@ Test calibration file
     # Get display name
     echo $DISPLAY
 
-    # Test running Lenovo ThinkPad x220 
+    # Test running Lenovo ThinkPad x220
     xcalib -d :0 .config/icc/Profiles/Color-LCD-#1-2016-02-16-02-0-2.2-F-S-XYZLUT+MTX.icc
 

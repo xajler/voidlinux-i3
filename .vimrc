@@ -68,8 +68,18 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 map <F10> :Goyo<CR>
 inoremap <F10> <esc>:Goyo<CR>a
 
+" Enable autocompletion:
 set wildmode=longest,list,full
 set wildmenu
+
+" Automatically deletes all tralling whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
+" Copy selected text to system clipboard (requires xclip installed):
+vnoremap <C-c> "cy<esc>:!echo -n '<C-R>c' \|<space>xclip<CR><enter>
+
+" Use urlview to choose and open a url:
+:noremap <leader>u :w<Home>silent <End> !urlview<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>

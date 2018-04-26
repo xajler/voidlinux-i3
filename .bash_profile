@@ -5,7 +5,7 @@
 
 export PATH=$PATH:$HOME/.scripts:$HOME/.bin #:$HOME/.npm-global/bin
 export EDITOR="vim"
-export TERMINAL="urxvt" #"st"
+export TERMINAL="st" #"urxvt"
 export FEH_SLIDES="$HOME/Pictures/wallpapers"
 export BROWSER="qutebrowser"
 
