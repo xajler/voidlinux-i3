@@ -72,7 +72,7 @@ font-2 = fontawesome:pixelsize=8;1
 modules-left = i3 mpd
 modules-center = date
 ; For partition with home and root with or without battery1
-;modules-right = filesystem pkg hwmon volume vpncheck battery # battery1
+;modules-right = home filesystem pkg hwmon volume vpncheck battery # battery1
 ; For single root partition
 modules-right = filesystem pkg hwmon volume vpncheck battery battery1
 

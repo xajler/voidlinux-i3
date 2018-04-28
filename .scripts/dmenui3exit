@@ -1,0 +1,24 @@
+#!/bin/bash
+
+x=$(echo -e "lock\nsuspend\nhibernate\nreboot\nshutdown\nlogout)" | dmenu -i -p "Choose?")
+
+case "$x" in
+    lock)
+        blurlock && disown
+        ;;
+    logout)
+        i3-msg exit && disown
+        ;;
+    suspend)
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'blurlock; zzz'
+        ;;
+    hibernate)
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'blurlock; ZZZ'
+        ;;
+    reboot)
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A reboot
+        ;;
+    shutdown)
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A shutdown -h now
+        ;;
+esac

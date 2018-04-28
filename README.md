@@ -77,6 +77,8 @@ Install apps
     sudo xbps-install -S base-devel
     # For compiling st
     sudo xbps-install -S fontconfig-devel libX11-devel libXft-devel
+    # For compiling dmenu
+    sudo xbps-install -S libXinerama-devel libXft-devel freetype-devel
 
     # Suggestions by tlp
     sudo xbps-install -S acpi_call-dkms smartmontools
