@@ -43,7 +43,7 @@ exec --no-startup-id unclutter
 # Lock window
 #exec --no-startup-id xautolock -time 10 -locker blurlock
 #Launch Polybar where appropriate:
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id polybar-launch
 
 # Cycle desktop wallpapers from given #FEH_SLIDES folder
 exec $HOME/.bin/feh-slides -i 7 "$FEH_SLIDES" & disown
