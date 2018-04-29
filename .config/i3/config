@@ -366,6 +366,7 @@ assign [class="^mpv$"] 7
 for_window [class="^mpv$"] border pixel 0, focus, fullscreen
 for_window [instance="^mupdf$"] border pixel 0, focus
 for_window [instance="^feh$"] border pixel 0, focus
+for_window [instance="^sxiv$"] border pixel 0, focus
 assign [title="^ranger$"] 2
 for_window [title="^ranger$" class="^st-256color$" instance="^st-256color$"] focus
 assign [instance="^ncmpcpp$"] 3
