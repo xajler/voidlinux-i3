@@ -1,6 +1,6 @@
 #!/bin/bash
 
-x=$(echo -e "lock\nsuspend\nhibernate\nreboot\nshutdown\nlogout)" | dmenu -i -p "Choose?")
+x=$(echo -e "lock\nsuspend\nhibernate\nreboot\nshutdown\nlogout" | dmenu -i -p "Choose?")
 
 case "$x" in
     lock)

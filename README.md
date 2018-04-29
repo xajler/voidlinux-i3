@@ -55,7 +55,7 @@ Install sound
 
 Install xorg
 
-    sudo xbps-install -S xorg-server xorg-apps xorg-minimal xinit xterm
+    sudo xbps-install -S xorg-server xorg-apps xorg-minimal xinit xterm xcape
     sudo xbps-install -S xf86-video-intel xf86-input-libinput
 
 Install apps

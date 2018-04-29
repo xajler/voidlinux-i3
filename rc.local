@@ -1,0 +1,5 @@
+# Turn off Bluetooth by default
+# For thinkpads
+echo disable > /proc/acpi/ibm/bluetooth
+# or rfkill
+# rfkill block bluetooth

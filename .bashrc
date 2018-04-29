@@ -36,12 +36,14 @@ alias bigfor="mpc seek +120"
 alias hrtime="sudo timedatectl set-timezone Europe/Zagreb && i3 restart"
 alias mw="~/.config/mutt/mutt-wizard.sh"
 alias muttwizard="~/.config/mutt/mutt-wizard.sh"
-alias progs="(pacman -Qet && pacman -Qm) | sort -u" # List programs I've installed
-alias orphans="pacman -Qdt" # List orphan programs
+alias progs="xbps-query -l"  # List programs I've installed
+alias orphans="xbps-query -O" # List orphan programs
 alias sdn="sudo shutdown now"
 alias newnet="sudo sv restart wpa_supplicant" # Refresh wifi
 alias nf="clear && neofetch" # Le Redditfetch
 alias psref="gpg-connect-agent RELOADAGENT /bye" # Refresh gpg
+alias btoff="sudo bluetooth off"
+alias bton="sudo bluetooth on"
 
 #Directory Shortcuts:
 alias la="ls -al"
@@ -93,6 +95,7 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 # Misc
 #alias fake="mono /home/x/src/qualtrak/Fake/tools/FAKE.exe"
 alias hfspmnt="sudo mount -t hfsplus /dev/sdb2 /mnt/usb"
+alias i3tree="i3-msg -t get_tree"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
