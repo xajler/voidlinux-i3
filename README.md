@@ -83,6 +83,12 @@ Install apps
     # Suggestions by tlp
     sudo xbps-install -S acpi_call-dkms smartmontools
 
+neovim
+
+    sudo xbps-install -S neovim
+    ln -s ~/.vim /home/x/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
+
 Add URxvt font resize
 
     cd ~/src

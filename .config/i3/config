@@ -349,7 +349,7 @@ bindsym XF86AudioRaiseVolume	exec $inc
 bindsym XF86PowerOff		    exec sudo shutdown -h now
 bindsym XF86Sleep		        exec sudo zzz
 bindsym XF86AudioMicMute	    exec $micmute
-bindsym XF86Suspend		        exec --no-startup-id ~/.config/i3/lock.sh
+bindsym XF86Suspend		        exec dmenui3exit
 bindsym XF86Search		        exec $BROWSER https://duckduckgo.com
 bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 15
 bindsym XF86MonBrightnessUp	    exec --no-startup-id xbacklight -inc 15
