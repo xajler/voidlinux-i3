@@ -8,6 +8,7 @@
 * Luke Smith [voidrice](https://github.com/LukeSmithxyz/voidrice)
 * Drew DeVault [dotfiles](https://drewdevault.com/feed.xml)
 * David Paulos [XbpsUI](https://github.com/davidpaulos/XbpsUI)
+* deus.vim colorscheme [vim-deus](https://github.com/ajmwagar/vim-deus)
 
 ## Install
 
