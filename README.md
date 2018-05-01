@@ -3,6 +3,14 @@
 
 ![void](void.png)
 
+## Credits;
+
+* Luke Smith [voidrice](https://github.com/LukeSmithxyz/voidrice)
+* Drew DeVault [dotfiles](https://drewdevault.com/feed.xml)
+* David Paulos [XbpsUI](https://github.com/davidpaulos/XbpsUI)
+
+## Install
+
 **TODO: This text needs changes**
 
 Update Void Linux
@@ -95,6 +103,10 @@ Add URxvt font resize
     git clone https://github.com/simmel/urxvt-resize-font
     sudo cp ~/src/urxvt-resize-font/resize-font /usr/lib/urxvt/perl
 
+## Configuration
+
+### Services
+
 Link and start services
 
     la /var/service
@@ -103,6 +115,8 @@ Link and start services
     sudo ln -s /etc/sv/cgmanager /var/service
     sudo ln -s /etc/sv/consolekit /var/service
     reboot # easier than up all
+
+### Wifi
 
 WiFi config (WPA)
 
@@ -156,6 +170,8 @@ Temporary WiFi config (WPA)
     wpa_supplicant -i wlp3s0 -c /etc/wpa_supplicant/wpa_supplicant-<SSID-name>.conf &
 
 
+### VPN
+
 ProtonVPN
 
     # Create dir for openvpn cilent
@@ -188,12 +204,16 @@ Create ProtonVPN runit services
 
     # TODO
 
+### Bluetooth
+
 Bluetooh
 
     sudo xbps-install -S bluez
     # Turn off bluetooth, use 'on' to turn it  on
     sudo bluetooth off
+    # use rc.local to turn it off on startup
 
+### Audio
 Test sound with speakers and headphones
 
     # make sure nothing is at 0 or use pavucontrol
@@ -209,6 +229,8 @@ Sound problems mulitpile card
 
     # Add this content int o alsa-base.conf (swaps sound cards, so 1 is defaust)
     options snd_hda_intel index=1,0
+
+### Misc
 
 Test urxvt font
 

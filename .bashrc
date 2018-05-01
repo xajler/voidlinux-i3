@@ -77,7 +77,7 @@ alias trem="transmission-remote"
 alias mkd="mkdir -pv"
 alias rf="source ~/.bashrc"
 alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc
-alias bars="bash ~/.config/polybar/launch.sh" # Run Polybar relaunch script
+alias bars="bash ~/.scripts/polybar-launch" # Run Polybar relaunch script
 
 # Adding color
 alias ls='ls -hN --color=auto --group-directories-first'

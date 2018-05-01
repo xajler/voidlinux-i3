@@ -15,11 +15,14 @@ set $stoprec --no-startup-id killall ffmpeg
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
+# Do not focus window where mouse is
+focus_follows_mouse no
+
 ###---Starting External Scripts---###
 #Setting the background:
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
 #Starts dunst for notifications:
-exec --no-startup-id dunst
+#exec --no-startup-id dunst
 #Music player daemon:
 exec --no-startup-id mpd
 #Composite manager:
@@ -27,7 +30,7 @@ exec --no-startup-id compton --xrender-sync-fence
 #Runs the key remapping scripts
 exec --no-startup-id ~/.scripts/remaps
 #Unclutter makes the mouse invisible after a brief period
-exec --no-startup-id unclutter
+#exec --no-startup-id unclutter
 # Lock window
 exec --no-startup-id xautolock -time 10 -locker blurlock
 #Launch Polybar where appropriate:
@@ -136,7 +139,7 @@ bindsym $mod+Shift+i		resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
 
 bindsym $mod+p			    exec $pause
-#bindsym $mod+Shift+p		exec mypaint
+bindsym --release $mod+Shift+p		exec scrot
 
 bindsym $mod+a			    [instance="math"] scratchpad show; move position center
 bindsym $mod+Shift+a		exec pavucontrol
@@ -329,9 +332,10 @@ bindsym $mod+bracketright 	    exec $lilfor
 bindsym $mod+Shift+bracketright exec $bigfor
 
 #Print screen takes a screenshot.
+# Only for Thinkpad x220, t440s Print is mapped to super.
 #With shift, it takes one only of the given window.
-#bindsym Print			exec --no-startup-id i3-scrot
-#bindsym Shift+Print 	exec --no-startup-id scrot -u
+bindsym --release Print			exec scrot
+bindsym --release Shift+Print 	exec scrot -u
 
 #For recording audio/video or stop recording. Also screenkey for visual typing.
 bindsym $mod+Print	    	exec --no-startup-id screenkey
@@ -349,7 +353,7 @@ bindsym XF86AudioRaiseVolume	exec $inc
 bindsym XF86PowerOff		    exec sudo shutdown -h now
 bindsym XF86Sleep		        exec sudo zzz
 bindsym XF86AudioMicMute	    exec $micmute
-bindsym XF86Suspend		        exec dmenui3exit
+bindsym XF86Suspend		        exec --no-startup-id ~/.config/i3/lock.sh
 bindsym XF86Search		        exec $BROWSER https://duckduckgo.com
 bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 15
 bindsym XF86MonBrightnessUp	    exec --no-startup-id xbacklight -inc 15
