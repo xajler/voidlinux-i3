@@ -242,7 +242,7 @@ Nodejs - npm
     Read in [npm docs](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
 
     sudo xbps-install -S nodejs-lts
-    mkdir e~/.npm-global
+    mkdir ~/.npm-global
     npm config set prefix '~/.npm-global'
     # Add to .bash_profile
     export PATH=~/.npm-global/bin:$PATH

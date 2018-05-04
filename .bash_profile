@@ -3,7 +3,7 @@
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
 
-export PATH=$PATH:$HOME/.scripts:$HOME/.bin #:$HOME/.npm-global/bin
+export PATH=$HOME/.scripts:$HOME/.bin:$HOME/.npm-global/bin:$PATH
 export EDITOR="vim"
 export TERMINAL="st" #"urxvt"
 export FEH_SLIDES="$HOME/Pictures/wallpapers"
