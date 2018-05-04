@@ -8,7 +8,6 @@
 * Luke Smith [voidrice](https://github.com/LukeSmithxyz/voidrice)
 * Drew DeVault [dotfiles](https://drewdevault.com/feed.xml)
 * David Paulos [XbpsUI](https://github.com/davidpaulos/XbpsUI)
-* deus.vim colorscheme [vim-deus](https://github.com/ajmwagar/vim-deus)
 
 ## Install
 
@@ -20,7 +19,7 @@ Update Void Linux
 
 Install elementary software
 
-    sudo xbps-install -S git vim
+    sudo xbps-install -S git neovim
     sudo xbps-install -S bash-completion neofetch
     sudo xbps-install -S tlp powertop htop lm_sensors fzf intel-ucode
 
@@ -53,7 +52,7 @@ Copy dotfiles to home folder
     cp -rf ~/src/voidlinux-i3/* ~/
     cp -rf ~/src/voidlinux-i3/.* ~/
 
-Install Vim Plugs (inside vim)
+Install Vim Plugs (inside neovim)
 
     :PlugInstall
 
@@ -76,7 +75,7 @@ Install apps
     sudo xbps-install -S i3-gaps i3status i3lock i3blocks
     sudo xbps-install -S acpi playerctl sysstat tree ImageMagick w3m w3m-img dunst sxiv
     sudo xbps-install -S polybar
-    sudo xbps-install -S xcalib bind-utils gnumeric
+    sudo xbps-install -S xcalib bind-utils gnumeric R
     sudo xbps-install -S unclutter newsboat xclip
     sudo xbps-install -S noto-fonts-ttf liberation-fonts-ttf
     sudo xbps-install -S envypn-font
@@ -91,12 +90,6 @@ Install apps
 
     # Suggestions by tlp
     sudo xbps-install -S acpi_call-dkms smartmontools
-
-neovim
-
-    sudo xbps-install -S neovim
-    ln -s ~/.vim /home/x/.config/nvim
-    ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 Add URxvt font resize
 
@@ -244,3 +237,12 @@ Test calibration file
     # Test running Lenovo ThinkPad x220
     xcalib -d :0 .config/icc/Profiles/Color-LCD-#1-2016-02-16-02-0-2.2-F-S-XYZLUT+MTX.icc
 
+Nodejs - npm
+
+    Read in [npm docs](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+
+    mkdir e~/.npm-global
+    npm config set prefix '~/.npm-global'
+    # Add to .bash_profile
+    export PATH=~/.npm-global/bin:$PATH
+    source ~/.bash_profile

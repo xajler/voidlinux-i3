@@ -74,23 +74,14 @@ set $audio --no-startup-id bash ~/.config/Scripts/audio_alsa.sh
 
 
 ###---Dropdown/Scratchpad Windows---###
-#First I have a tmux window used for background scripts.
-#I'll later bind this to mod+u.
-for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] resize set 625 400
-for_window [instance="dropdown"] move position center
-for_window [instance="dropdown"] move scratchpad
-for_window [instance="dropdown"] border pixel 5
-exec --no-startup-id $term -name dropdown -e tmux
 
 #Then I have a window running R I use for basic arithmetic
 #I'll later bind this to mod+a.
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 800 300
-for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
-for_window [instance="dropdown"] border pixel 5
-exec --no-startup-id $term -fn "xft:mono:pixelsize=24" -name math -e R -q
+for_window [instance="math"] border pixel 5
+#exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q
 
 ###---Basic Bindings---###
 bindsym $mod+F2			    exec --no-startup-id blurlock
@@ -129,7 +120,7 @@ bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 bindsym $mod+y			    exec $term -e calcurse
 bindsym $mod+Shift+y		resize shrink width 10 px or 10ppt
 
-bindsym $mod+u			    [instance="dropdown"] scratchpad show; move position center
+#bindsym $mod+u			    [instance="dropdown"] scratchpad show; move position center
 bindsym $mod+Shift+u		resize shrink height 10 px or 10 ppt
 
 bindsym $mod+i 			    exec $term -e htop
@@ -141,9 +132,9 @@ bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
 bindsym $mod+p			    exec $pause
 bindsym --release $mod+Shift+p		exec scrot
 
-bindsym $mod+a			    [instance="math"] scratchpad show; move position center
+bindsym $mod+a              exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q;[instance="math"] scratchpad show; [instance="math"] move position center
+#exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q
 bindsym $mod+Shift+a		exec pavucontrol
-#bindsym $mod+Shift+a		exec $term -e ncpamixer
 
 bindsym $mod+s			    gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5
@@ -185,7 +176,7 @@ bindsym $mod+c			    exec --no-startup-id camtoggle
 bindsym $mod+b              exec --no-startup-id $BROWSER
 bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id bottomleft
 
-bindsym $mod+n			    exec $term -e newsboat
+bindsym $mod+n			    exec $term -e  newsboat -C ~/.config/newsboat/config -u ~/.config/newsboat/urls
 #bindsym $mod+Shift+n		exec $term -e newsboat
 
 bindsym $mod+m 			    exec st -T ncmpcpp -n ncmpcpp -w ncmpcpp -e ncmpcpp;

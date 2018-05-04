@@ -67,7 +67,7 @@ font-1 = uniformat:fontformat=truetype:size=8:antialias=false;0
 ; For ThinkPad x220 or smaller screens
 ;font-2 = fontawesome:pixelsize=6;1
 ; For ThinkPad t440s or FullHD screen
-font-2 = fontawesome:pixelsize=8;1
+font-2 = fontawesome:pixelsize=7;1
 
 modules-left = i3 mpd
 modules-center = date
