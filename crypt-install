@@ -1,0 +1,28 @@
+fdisk -l
+sv start dhcpcd 
+git clone https://github.com/xajler/voidlinux-i3
+dd if=/dev/urandom of=/dev/sda &
+ps -aux | grep dd
+setfont ter-v18b
+cfdisk /dev/sda
+lsblk
+cryptsetup luksFormat /dev/sda1
+cryptsetup open --type luks /dev/sda1 vlv
+ls /dev/mapper/vlv
+pvcreate /dev/mapper/vlv
+vgcreate vlvg /dev/mapper/vlv 
+lvcreate -L4G vlvg -n swap
+lvcreate -L15G vlvg -n root
+lvcreate -l 100%FREE vlvg -n home
+mkfs.ext4 /dev/mapper/vlvg-root 
+mkfs.ext4 /dev/mapper/vlvg-home 
+mkswap /dev/mapper/vlvg-swap 
+mount /dev/mapper/vlvg-root /mnt
+mkdir /mnt/dev /mnt/proc /mnt/sys /mnt/home
+mount --rbind /dev /mnt/dev
+mount --rbind /proc /mnt/proc
+mount --rbind /sys /mnt/sys
+mount /dev/mapper/vlvg-home /mnt/home
+swapon /dev/mapper/vlvg-swap 
+./run-xbps-bas-install.sh 
+chroot /mnt /bin/bash
