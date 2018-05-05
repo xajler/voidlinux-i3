@@ -1,0 +1,3 @@
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:cryptroot:allow-discards"
+GRUB_ENABLE_CRYPTODISK=y
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 slub_debug=P page_poison=1 rd.auto=1"

@@ -1,0 +1,4 @@
+dd bs=512 count=4 if=/dev/urandom of=/crypto_keyfile.bin
+cryptsetup luksAddKey /dev/sda2 /crypto_keyfile.bin
+chmod 000 /crypto_keyfile.bin
+chmod -R g-rwx,o-rwx /boot

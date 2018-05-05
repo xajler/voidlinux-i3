@@ -1,0 +1,7 @@
+passwd
+chsh -s /bin/bash
+ln -sf /usr/share/zoneinfo/Europe/Zagreb /etc/localtime
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
+xbps-reconfigure -f glibc-locales
+echo my-hostname > /etc/hostname

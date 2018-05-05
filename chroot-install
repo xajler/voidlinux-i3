@@ -1,0 +1,13 @@
+passwd
+chsh -s /bin/bash
+ln -sf /usr/share/zoneinfo/Europe/Zagreb /etc/localtime
+echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+xbps-reconfigure -f glibc-locales
+echo x430n > /etc/hostname
+vim /etc/rc.conf
+dd bs=512 count=4 if=/dev/urandom of=/keyfile.bin
+cryptsetup luksAddKey /dev/sda1 /keyfile.bin
+chmod 000 /keyfile.bin
+chmod -R g-rwx,o-rwx /boot
+
