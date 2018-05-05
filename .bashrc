@@ -97,6 +97,14 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 #alias fake="mono /home/x/src/qualtrak/Fake/tools/FAKE.exe"
 alias hfspmnt="sudo mount -t hfsplus /dev/sdb2 /mnt/usb"
 alias i3tree="i3-msg -t get_tree"
+alias gpg="gpg2"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/x/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/x/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/x/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/x/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash

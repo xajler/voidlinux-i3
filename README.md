@@ -59,7 +59,7 @@ Install Vim Plugs (inside neovim)
 Install sound
 
     sudo xbps-install -S alsa-utils alsa-plugins alsa-lib alsa-firmware
-    sudo xbps-install -S alsa-utils pulseaudio ConsoleKit2 pavucontrol
+    sudo xbps-install -S pulseaudio ConsoleKit2 pavucontrol
 
 Install xorg
 
@@ -69,7 +69,7 @@ Install xorg
 Install apps
 
     sudo xbps-install -S rxvt-unicode ranger qutebrowser calcurse mpd mpc mpv compton
-    sudo xbps-install -S youtube-dl ffmpeg feh rofi arandr scrot mirage tmux urxvt-perls
+    sudo xbps-install -S youtube-dl ffmpeg feh arandr scrot mirage tmux urxvt-perls
     sudo xpbs-install -S lxappearance xautolock mupdf cmatrix openvpn terminus-font ncmpcpp
     sudo xbps-install -S font-unifont-bdf font-awesome
     sudo xbps-install -S i3-gaps i3status i3lock i3blocks
@@ -90,6 +90,10 @@ Install apps
 
     # Suggestions by tlp
     sudo xbps-install -S acpi_call-dkms smartmontools
+
+Install security
+
+    sudo xbps-install -S gpg gpg2 yadm pass
 
 Add URxvt font resize
 
@@ -247,3 +251,10 @@ Nodejs - npm
     # Add to .bash_profile
     export PATH=~/.npm-global/bin:$PATH
     source ~/.bash_profile
+
+Void mklive
+
+     sudo xbps-install lz4-devel
+     sudo xbps-install -S qemu-user-static
+    sudo bash mklive.sh -k dvorak -p 'vim bash bash-completion git gnupg gnupg2 yadm dialog'
+
