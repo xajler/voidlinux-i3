@@ -1,5 +1,4 @@
-exec i3 
-start-pulseaudio-x11 &
+exec i3
 xset b off
 
 # Add this to exec i3 for logging.
