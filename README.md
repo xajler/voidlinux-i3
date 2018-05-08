@@ -59,7 +59,6 @@ Install Vim Plugs (inside neovim)
 Install sound
 
     sudo xbps-install -S alsa-utils alsa-plugins alsa-lib alsa-firmware
-    sudo xbps-install -S pulseaudio ConsoleKit2 pavucontrol
 
 Install xorg
 
@@ -216,9 +215,6 @@ Test sound with speakers and headphones
 
     # make sure nothing is at 0 or use pavucontrol
     alsamixer
-
-    # unmute muted devices
-    pavucontrol
 
 Sound problems mulitpile card
 
