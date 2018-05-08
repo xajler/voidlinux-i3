@@ -107,10 +107,10 @@ Add URxvt font resize
 Link and start services
 
     la /var/service
-    sudo ln -s /etc/sv/dbus /var/service
-    sudo ln -s /etc/sv/tlp /var/service
-    sudo ln -s /etc/sv/cgmanager /var/service
-    sudo ln -s /etc/sv/consolekit /var/service
+    sudo ln -sf /etc/sv/dbus /var/service
+    sudo ln -sf /etc/sv/tlp /var/service
+    sudo ln -sf /etc/sv/alsa /var/service
+    sudo ln -sf /etc/sv/cgmanager /var/service
     reboot # easier than up all
 
 ### Wifi
@@ -222,7 +222,7 @@ Sound problems mulitpile card
     sudo vim  /etc/modprobe.d/alsa-base.conf
 
     # Add this content int o alsa-base.conf (swaps sound cards, so 1 is defaust)
-    options snd_hda_intel index=1,0
+    options snd-hda-intel index=1,0
 
 ### Misc
 
