@@ -1,0 +1,3 @@
+#!/bin/sh
+
+arecord -d 7 /tmp/${1}-test-mic.waw && aplay /tmp/${1}-test-mic.waw

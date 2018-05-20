@@ -38,9 +38,9 @@ URxvt.depth: 		32
 
 URxvt.intensityStyles:	false
 !! For ThinkPad x220 or smaller screens
-!!URxvt.font: 		xft:terminus:size=9
+URxv.font: 		xft:terminus:size=10:antialias=true
 !! For ThinkPad t440s or FullHD screens
-URxvt.font: 		xft:terminus:size=11
+!!URxvt.font: 		xft:terminus:size=11
 URxvt.scrollBar:	false
 URxvt.cursorColor:	magenta
 URxvt.saveLines:    	5000

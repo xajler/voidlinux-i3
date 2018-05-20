@@ -40,6 +40,7 @@ alias progs="xbps-query -l"  # List programs I've installed
 alias orphans="xbps-query -O" # List orphan programs
 alias sdn="sudo shutdown now"
 alias newnet="sudo sv restart wpa_supplicant" # Refresh wifi
+alias vpnrestart="sudo sv restart de-03-vpn"
 alias nf="clear && neofetch" # Le Redditfetch
 alias psref="gpg-connect-agent RELOADAGENT /bye" # Refresh gpg
 alias btoff="sudo bluetooth off"

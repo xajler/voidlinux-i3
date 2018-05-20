@@ -1,17 +1,5 @@
 filetype plugin on
 syntax enable
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'ajmwagar/vim-deus'
-Plug 'junegunn/goyo.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-"Plug 'OrangeT/vim-csharp.git'
-Plug 'fsharp/vim-fsharp'
-call plug#end()
-
 colorscheme deus
 let mapleader = ","
 
@@ -61,6 +49,16 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/goyo.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'OrangeT/vim-csharp.git'
+Plug 'fsharp/vim-fsharp'
+call plug#end()
 
 nnoremap S :%s//g<Left><Left>
 vnoremap S noop

@@ -8,6 +8,7 @@ export EDITOR="vim"
 export TERMINAL="st" #"urxvt"
 export FEH_SLIDES="$HOME/Pictures/wallpapers"
 export BROWSER="qutebrowser"
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
 if [[ ! $DISPLAY ]]; then
   exec startx

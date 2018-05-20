@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -type f -print0 | xargs -0 shred -fuzv -n 30

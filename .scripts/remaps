@@ -13,10 +13,11 @@ setxkbmap -layout dvorak -option caps:super
 # But when it is pressed only once, treat it as escape.
 xcape -e 'Super_L=Escape'
 
+
 # Remap Lenovo keys in older laptos Menu button to Meta in newer Print button to Super
 
 #Remap Menu button to Super (for ThinkPad x220):
-#xmodmap -e 'keycode 135 = Super_L'
+xmodmap -e 'keycode 135 = Super_L'
 
 #Remap PrtSc button to Super (for ThinkPad t440s - for all thinkpads starting with x230, t430 and newer, all having Print key):
-xmodmap -e 'keycode 107 = Super_L'
+#xmodmap -e 'keycode 107 = Super_L'
