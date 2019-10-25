@@ -1,0 +1,360 @@
+# vim: filetype=i3
+
+ output eDP1 pos 0 0 res 1920 1080
+
+###---Basic Definitions---###
+#Needed for i3-gaps
+hide_edge_borders both
+for_window [class="^.*"] border pixel 2
+gaps inner 12
+gaps outer 3
+font pango:mono 9
+set $mod Mod4
+set $alt Mod1
+set $term --no-startup-id st
+
+# use these keys for focus, movement, and resize directions
+set $left   h
+set $down   j
+set $up     k
+set $right  s
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# Do not focus window where mouse is
+focus_follows_mouse no
+
+###---Starting External Scripts---###
+exec_always --no-startup-id polybar-launch & disown
+
+###---Audio and Music Definitions---###
+##For mpc:
+set $pause --no-startup-id mpc toggle
+set $trupause --no-startup-id mpc pause
+set $next --no-startup-id mpc next
+set $prev --no-startup-id mpc prev
+set $lilfor --no-startup-id mpc seek +10
+set $bigfor --no-startup-id mpc seek +120
+set $lilbak --no-startup-id mpc seek -10
+set $bigbak --no-startup-id mpc seek -120
+set $beg --no-startup-id mpc seek 0%
+
+#For PULSEAUDIO/PAMIXER
+set $inc --no-startup-id pamixer --allow-boost -i 5
+set $biginc --no-startup-id pamixer --allow-boost -i 15
+set $dec --no-startup-id pamixer --allow-boost -d 5
+set $bigdec --no-startup-id pamixer --allow-boost -d 15
+set $mute --no-startup-id pamixer --allow-boost -t
+set $micmute --no-startup-id pamixer --allow-boost -t
+set $truemute --no-startup-id pamixer -m
+
+###---Dropdown/Scratchpad Windows---###
+
+#Then I have a window running R I use for basic arithmetic
+#I'll later bind this to mod+a.
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 900 250
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] border pixel 5
+exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q
+
+###---Basic Bindings---###
+bindsym $mod+F2			    exec --no-startup-id blurlock
+bindsym $mod+Return 		exec $term
+for_window [instance="terminal"] floating enable
+for_window [instance="terminal"] resize set 1000 600
+for_window [instance="terminal"] move scratchpad
+exec --no-startup-id $term -n terminal -e sh -c "cd ~/src/qualtrak; bash"
+bindsym $mod+Shift+Return   [instance="terminal"] scratchpad show; [instance="terminal"] move position center
+
+bindsym $mod+Shift+space 	floating toggle
+bindsym $mod+space		    focus mode_toggle
+
+#bindsym $mod+Escape		    workspace prev
+bindsym $mod+BackSpace      exec prompt "Are you sure you want to leave i3?" "i3-msg exit"
+bindsym $mod+Shift+BackSpace exec prompt "Are you sure you want to reboot?" "$reboot"
+
+#bindsym $mod+asciitilde
+#STOP/HIDE EVERYTHING:
+bindsym $mod+Shift+Delete	exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec $term -e ranger
+
+###---Letter Key Bindings---###
+bindsym $mod+q			    kill
+#bindsym $mod+Shift+q	    kill
+
+# For ThinkPad t440s and touch enabled screens
+#bindsym $mod+w			    exec --no-startup-id MOZ_USE_XINPUT2=1 /usr/bin/firefox
+# For ThinkPad x220 and non touch enabled screnns
+bindsym $mod+w			    exec /usr/bin/firefox
+#bindsym $mod+Shift+w
+
+#bindsym $mod+e			    exec $term -e neomutt
+#bindsym $mod+Shift+e
+
+bindsym $mod+r 			    exec $term -e ranger
+bindsym $mod+$alt+r		    restart
+
+#bindsym $mod+t			    split toggle
+#bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
+
+#bindsym $mod+y			    exec $term -e calcurse
+#bindsym $mod+Shift+y		resize shrink width 10 px or 10ppt
+
+#bindsym $mod+u			    [instance="dropdown"] scratchpad show; move position center
+#bindsym $mod+Shift+u		resize shrink height 10 px or 10 ppt
+
+bindsym $mod+i 			    exec $term -e htop
+#bindsym $mod+Shift+i		resize grow height 10 px or 10 ppt
+
+#bindsym $mod+o			    exec --no-startup-id $beg
+#bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
+
+bindsym $mod+p			    exec $pause
+bindsym --release $mod+Shift+p		exec scrot
+
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 800 300
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] border pixel 5
+exec --no-startup-id $term -n math -f mono:pixelsize=24 -e R -q
+bindsym $mod+a              [instance="math"] scratchpad show; [instance="math"] move position center
+#bindsym $mod+Shift+a		exec pavucontrol
+
+bindsym $mod+l		        gaps inner current plus 5
+bindsym $mod+Shift+l		gaps inner current minus 5
+
+bindsym $mod+d			    exec --no-startup-id dmenu_run -p "Run:" -l 10
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+
+bindsym $mod+f			    fullscreen toggle
+#bindsym $mod+Shift+f
+
+bindsym $mod+g              workspace prev
+#bindsym $mod+Shift+g		exec --no-startup-id gimp; workspace $ws5
+
+bindsym $mod+c              workspace next
+bindsym $mod+Shift+c		exec $term -e calcurse -D $HOME/.config/calcurse
+
+bindsym $mod+z			    gaps outer current plus 5
+bindsym $mod+Shift+z		gaps outer current minus 5
+
+bindsym $mod+x			    exec dmenui3exit
+bindsym $mod+Shift+x		exec prompt "Are you sure you want to shutdown?" "$shutdown"
+
+#bindsym $mod+v			    exec urxvt -e vis
+#bindsym $mod+Shift+v		exec projectM-pulseaudio
+
+bindsym $mod+b              exec --no-startup-id qutebrowser # $BROWSER
+bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id bottomleft
+
+bindsym $mod+n			    exec $term -e  newsboat -C ~/.config/newsboat/config -u ~/.config/newsboat/urls
+#bindsym $mod+Shift+n		exec $term -e newsboat
+
+bindsym $mod+m 			    exec st -T ncmpcpp -n ncmpcpp -w ncmpcpp -e ncmpcpp;
+bindsym $mod+Shift+m		exec $mute
+
+
+###---Workspace Bindings---###
+bindsym $mod+Home		    workspace $ws1
+bindsym $mod+Shift+Home		move container to workspace $ws1
+bindsym $mod+End		    workspace $ws10
+bindsym $mod+Shift+End		move container to workspace $ws10
+bindsym $mod+Prior		    workspace prev
+bindsym $mod+Shift+Prior	move container to workspace prev
+bindsym $mod+Next		    workspace next
+bindsym $mod+Shift+Next		move container to workspace next
+bindsym $mod+Tab		    workspace back_and_forth
+bindsym $mod+XF86Back		workspace prev
+#bindsym $mod+Shift+XF86Back
+bindsym $mod+XF86Forward	workspace next
+#bindsym $mod+Shift+XF86Forward
+bindsym $mod+semicolon		workspace next
+bindsym $mod+apostrophe		split horizontal ;; exec $term
+bindsym $mod+slash		    split vertical ;; exec $term
+bindsym $mod+Shift+slash	kill
+bindsym $mod+backslash		workspace back_and_forth
+
+#set $ws1 ""
+#set $ws1 "1: "
+#set $ws2 "2: "
+#set $ws3 "3: "
+#set $ws4 "4: "
+#set $ws5 "5: "
+#set $ws6 "6: "
+#set $ws7 "7: "
+#set $ws8 "8: "
+#set $ws9 "9: "
+#set $ws10 "10: "
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1		workspace $ws1
+bindsym $mod+2		workspace $ws2
+bindsym $mod+3		workspace $ws3
+bindsym $mod+4		workspace $ws4
+bindsym $mod+5		workspace $ws5
+bindsym $mod+6		workspace $ws6
+bindsym $mod+7		workspace $ws7
+bindsym $mod+8		workspace $ws8
+bindsym $mod+9		workspace $ws9
+bindsym $mod+0		workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1	move container to workspace $ws1
+bindsym $mod+Shift+2	move container to workspace $ws2
+bindsym $mod+Shift+3	move container to workspace $ws3
+bindsym $mod+Shift+4	move container to workspace $ws4
+bindsym $mod+Shift+5	move container to workspace $ws5
+bindsym $mod+Shift+6	move container to workspace $ws6
+bindsym $mod+Shift+7	move container to workspace $ws7
+bindsym $mod+Shift+8	move container to workspace $ws8
+bindsym $mod+Shift+9	move container to workspace $ws9
+bindsym $mod+Shift+0	move container to workspace $ws10
+
+workspace $ws4 gaps inner 0
+workspace $ws4 gaps outer 0
+workspace $ws5 gaps inner 0
+workspace $ws5 gaps outer 0
+workspace $ws6 gaps inner 0
+workspace $ws6 gaps outer 0
+workspace $ws8 gaps inner 0
+workspace $ws8 gaps outer 0
+
+bindsym $mod+F1		exec --no-startup-id mupdf ~/.config/i3/i3_guide.md.pdf
+bindsym $mod+F4		exec --no-startup-id arandr
+#bindsym $mod+F4	exec --no-startup-id sudo zzz
+#bindsym $mod+F5	exec --no-startup-id sudo systemctl restart NetworkManager
+#bindsym $mod+F6	exec --no-startup-id urxvt -e transmission-remote-cli
+#bindsym $mod+F7	exec transset -a --dec .15
+#bindsym $mod+F8		exec transset -a --inc .15
+bindsym $mod+F9		exec --no-startup-id sudo mount -a
+bindsym $mod+F10	exec --no-startup-id exec --no-startup-id ~/.config/polybar/launch.sh
+bindsym F11		    fullscreen toggle
+
+###---Media Keys---###
+
+#Volume keys
+bindsym $mod+plus		    exec $inc
+bindsym $mod+Shift+plus		exec $biginc
+bindsym $mod+minus 		    exec $dec
+bindsym $mod+Shift+minus	exec $bigdec
+bindsym $mod+less 		    exec $prev
+bindsym $mod+Shift+less		exec $beg
+bindsym $mod+greater		exec $next
+bindsym $mod+Shift+greater	exec $next
+
+#For advancing forward/backward in an mpd song
+bindsym $mod+bracketleft 	    exec $lilbak
+bindsym $mod+Shift+bracketleft 	exec $bigbak
+bindsym $mod+bracketright 	    exec $lilfor
+bindsym $mod+Shift+bracketright exec $bigfor
+
+#Print screen takes a screenshot.
+# Only for Thinkpad x220, t440s Print is mapped to super.
+#With shift, it takes one only of the given window.
+bindsym --release Print			exec scrot
+bindsym --release Shift+Print 	exec scrot -u
+
+###---Extra XF86 Keys---###
+#These are the extra media keys that some keyboards have.
+bindsym XF86AudioMute		    exec $mute
+bindsym XF86AudioLowerVolume	exec $dec
+bindsym XF86AudioRaiseVolume	exec $inc
+bindsym XF86PowerOff		    exec sudo shutdown -h now
+bindsym XF86Sleep		        exec sudo zzz
+bindsym XF86AudioMicMute	    exec $micmute
+bindsym XF86Suspend		        exec --no-startup-id ~/.config/i3/lock.sh
+bindsym XF86Search		        exec $BROWSER https://duckduckgo.com
+bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 15
+bindsym XF86MonBrightnessUp	    exec --no-startup-id xbacklight -inc 15
+bindsym XF86Display		        exec --no-startup-id arandr
+#bindsym XF86Battery		    exec
+#bindsym XF86Bluetooth	    	exec
+
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# resize window
+bindsym $mod+Shift+r mode "  "
+mode "  " {
+    # pressing left and up will shrink the window's width and height
+    # pressing right and down will grow the window's width and height
+    bindsym $left   resize shrink width 10 px or 10 ppt
+    bindsym $down   resize grow height 10 px or 10 ppt
+    bindsym $up     resize shrink height 10 px or 10 ppt
+    bindsym $right  resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left    resize shrink width 10 px or 10 ppt
+    bindsym Down    resize grow height 10 px or 10 ppt
+    bindsym Up      resize shrink height 10 px or 10 ppt
+    bindsym Right   resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or win+r
+    bindsym Return mode "default"
+    bindsym $mod+r mode "default"
+}
+
+assign [instance="^stride$"] 8
+for_window [instance="^stride$"] floating enable
+for_window [instance="^stride$"] resize set 1100 900
+for_window [instance="^stride$"] border normal, focus
+
+assign [instance="^skype$"] 8
+for_window [instance="^skype$"] floating enable
+for_window [instance="^skype$"] border normal, focus
+
+assign [instance="^qutebrowser$"] 4
+for_window [instance="^qutebrowser$"] border pixel 0, focus
+assign [class="^Firefox$"] 5
+for_window [class="^Firefox$"] border pixel 0, focus
+assign [instance="^libreoffice$"] 6
+for_window [instance="^libreoffice$"] border pixel 0, focus
+assign [class="^mpv$"] 7
+for_window [class="^mpv$"] border pixel 0, focus, fullscreen
+for_window [instance="^mupdf$"] border pixel 0, focus
+for_window [instance="^feh$"] border pixel 0, focus
+for_window [instance="^sxiv$"] border pixel 0, focus
+assign [title="^ranger$"] 2
+for_window [title="^ranger$" class="^st-256color$" instance="^st-256color$"] focus
+assign [instance="^ncmpcpp$"] 3
+for_window [instance="^ncmpcpp$" class="^st-256color$"] focus
+assign [title="^newsboat$"] 2
+for_window [title="^newsboat$" class="^st-256color$" instance="^st-256color$"] focus
+
+for_window [title="GIMP Startup"] move workspace $ws5
+for_window [class="Gimp"] move workspace $ws5
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
+for_window [window_role="GtkFileChooserDialog"] resize shrink height 10 px

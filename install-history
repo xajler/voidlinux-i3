@@ -1,0 +1,72 @@
+
+sudo xbps-install vim
+sudo xbps-install bash-completion
+sudo xbps-install font-awesome
+sudo xbps-install -S libXft-devel
+sudo xbps-install -S fontconfig-devel
+sudo xbps-install -S freetype-devel
+sudo xbps-install -S glib glib-devel
+sudo xbps-install -S libXft
+sudo xbps-install -S libXft-devel
+sudo xbps-install -S neofetch git
+sudo xbps-install -S meson ninja sassc
+sudo xbps-install -S alacritty lxtask urlscan pulseaudio klavaro gnome-keyring nautilus gvfs dunst vscode zathura zathura-pdf-mupdf lxappearance keepassxc
+sudo xbps-install -S docker docker-compose
+sudo xbps-install go
+sudo xbps-install autofs
+sudo xbps-install -S openvpn
+sudo xbps-install -S zsh
+
+
+sudo xbps-install meson ninja sassc
+sudo xbps-install -S owncloudclient
+sudo xbps-install -S docker docker-compose
+sudo xbps-install nodejs-lts
+sudo xbps-install -S aws-cli
+sudo xbps-install libu2f-host
+sudo xbps-install -S libyubikey
+sudo xbps-install -S elogind
+sudo xbps-install -S ConsoleKit2
+sudo xbps-install -S gnupg2-scdaemon
+sudo xbps-install sway swaybg swayidle swaylock wlroots mako slurp grim wl-clipboard
+sudo xbps-install -S libwayland-egl
+sudo xbps-install -S libwaylandpp-devel
+sudo xbps-install -S xbitmaps
+sudo xbps-install -S libXcursor-devel
+sudo xbps-install -S libXmu-devel
+sudo xbps-install -S libXpm-devel
+sudo xbps-install Waybar
+sudo xbps-install -S python3-pip
+sudo xbps-install -S wayland-protocols libdrm-devel
+sudo xbps-install cmake
+sudo xbps-install libwayland-egl
+sudo xbps-install libEGL
+sudo xbps-install json-c-devel
+sudo xbps-install libxkbcommon-devel
+sudo xbps-install cairo-devel
+sudo xbps-install pango-devel
+sudo xbps-install libevdev-devel
+sudo xbps-install libinput-devel
+sudo xbps-install libelogind
+sudo xbps-install gdk-pixbuf-devel
+sudo xbps-install -S libcap-devel
+sudo xbps-install -S xcb-util-errors-devel
+sudo xbps-install -S libavutil libavcodec libavformat
+sudo xbps-install -S libappindicator-devel libdbusmenu-gtk3 scdoc
+sudo xbps-remove wlroots sway swaybg swaylock swayidle Waybar
+sudo xbps-install gtkmm-devel
+sudo xbps-install -S jsoncpp-devel
+sudo xbps-install libmpdclient-devel
+sudo xbps-install -S libnl-devel
+sudo xbps-install -S libnl3-devel
+sudo xbps-install -S libdbusmenu-gtk3
+sudo xbps-install -S libdbusmenu-gtk3-devel
+sudo xbps-install -S libpulseaudio
+sudo xbps-install -S sway swaybg swayidle swaylock
+sudo xbps-install pulseaudio
+sudo xbps-install pulseaudio-devel
+sudo xbps-install -S libpulseaudio
+sudo xbps-install -S alsa-utils pulseaudio
+
+
+

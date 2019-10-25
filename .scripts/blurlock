@@ -1,0 +1,46 @@
+#!/bin/bash
+# /usr/bin/blurlock
+
+# take screenshot
+import -window root /tmp/screenshot.png
+
+# blur it
+convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+rm /tmp/screenshot.png
+center_width=`xrandr |grep \* |awk '{print $1}'|awk -F"x" '{print $1}'`
+center_height=`xrandr |grep \* |awk '{print $1}'|awk -F"x" '{print $2}'`
+width=$(expr $center_width / 2)
+height=$(expr $center_height / 2)
+height2=$(expr $height + 80)
+
+# lock the screen
+i3lock -i /tmp/screenshotblur.png
+#i3lock \
+#    --image='/tmp/screenshotblur.png' \
+#    --insidecolor=282828FF \
+#    --insidevercolor=FABD2FFF \
+#    --insidewrongcolor=FB4934FF \
+#    --ringcolor=282828FF \
+#    --ringvercolor=282828FF \
+#    --ringwrongcolor=282828FF \
+#    --linecolor=EBDBB2FF \
+#    --keyhlcolor=EBDBB2FF \
+#    --bshlcolor=FB4934FF \
+#    --separatorcolor=282828FF \
+#    --timecolor=EBDBB2FF \
+#    --datecolor=00000000 \
+#    --layoutcolor=00000000 \
+#	--indpos="x+$width:y+$height" \
+#	--timepos="x+$width:y+$height2" \
+#    --timestr='%H:%M' \
+#    --time-font='monospace' \
+#    --force-clock \
+#    --refresh-rate=30 \
+#    --radius=32 \
+#    --ring-width=4 \
+#    --veriftext='' \
+#    --wrongtext='' \
+#    --noinputtext='' \
+#	--ignore-empty-password
+
+exit 0

@@ -1,19 +1,24 @@
 #!/bin/bash
 
-x=$(echo -e "lock\nsuspend\nhibernate\nreboot\nshutdown\nlogout" | dmenu -i -p "Choose?")
+x=$(echo -e "lock\nsuspend\nhibernate\nreboot\nshutdown\nlogout" | dmenu -i -p "Choose?" -l 6)
 
 case "$x" in
     lock)
-        blurlock && disown
+			if [ -z "${WAYLAND_DISPLAY}" ]; then
+				echo "its wayland"
+				sway-lock && disown
+			else
+				blurlock && disown
+			fi
         ;;
     logout)
         i3-msg exit && disown
         ;;
     suspend)
-		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'blurlock; zzz'
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'blurlock; systemctl suspend; vpnrestart'
         ;;
     hibernate)
-		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'blurlock; ZZZ'
+		SUDO_ASKPASS=~/.scripts/dpass sudo -A bash -c 'systemctl hibernate'
         ;;
     reboot)
 		SUDO_ASKPASS=~/.scripts/dpass sudo -A reboot

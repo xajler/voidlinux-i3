@@ -1,0 +1,14 @@
+#!/bin/sh
+
+WIDE_MONITOR=$(echo $(swaymsg -t get_outputs | grep 3440 | wc -l))
+
+
+if [[ $WIDE_MONITOR -gt 0 ]]; then
+    swaymsg output DP-1 pos 0 0 res 3440x1440
+    swaymsg output eDP-1 pos 3440 0 res 1920x1080
+    #swaymsg output eDP-1 disable
+    #swaymsg output DP-1 pos 0 0 res 3440x1440
+else
+    swaymsg output eDP-1 pos 0 0 res 1920x1080
+fi
+# res 1920x1080 layout none # pos 0 0 res 1920x1080

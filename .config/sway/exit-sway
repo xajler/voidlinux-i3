@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#kill -9 `pidof faked`
+#kill -9 `pidof sway-slides`
+kill -9 `pidof sway-mpd`
+#kill -9 `pidof waybar`
+swaymsg exit

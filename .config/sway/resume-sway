@@ -1,0 +1,5 @@
+#!/bin/sh
+
+swaymsg "output * dpms on"
+waybar-launch
+#sway-slides -i 60 "$FEH_SLIDES"

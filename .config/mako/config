@@ -1,0 +1,11 @@
+font=Cantarell 10
+background-color=#111111DD
+text-color=#CDCDCDFF
+width=400
+border-size=0
+format=<span foreground='#F3F4F5' font='Cantarell 11'><b>%s</b></span>\n%b
+padding=12,20
+
+[urgency=high]
+background-color=#D64E4EDD
+text-color=#F0E0E0FF

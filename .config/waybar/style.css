@@ -1,0 +1,165 @@
+/*
+ *  ThinkPad T440s:
+ *  - font-size: 15px
+ *  - border-bottom: 4px
+ *
+ *  ThinkPad x220:
+ *  - font-size: 13px
+ *  - border-bottom: 3px
+ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: 'UbuntuCondensed Nerd Font', terminus, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: rgba(43, 48, 59, 0.5);
+    /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+    color: #eeeeec;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: rgba(238, 238, 238, 0.1);
+    color: #90d0bb;
+    /*color: #000000;*/
+    border-bottom: 3px solid #666666;
+}
+
+#workspaces button.focused {
+    font-weight: bold;
+    color: #ffce51;
+    background-color: #333333; /*#64727D*/;
+    border-bottom: 3px solid #ffce51;
+}
+
+#workspaces button.urgent {
+    font-weight: bold;
+    color: #eb4d4b;
+    background-color: #333333; /*#64727D*/;
+    border-bottom: 3px solid #ffce51;
+}
+
+#mode {
+    border-bottom: 3px solid #f1c40f;
+}
+
+/* #clock, */
+#battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #idle_inhibitor
+#mpd, #disk, #custom-pkg, #custom-vpn {
+    /* background-color: #333333; */ /*#64727D*/
+    background: rgba(51, 51, 51, 0.5);
+    color: #eeeeec;
+    padding: 0 8px;
+    margin: 0;
+}
+
+#clock {
+    /* color: #90d0bb; */
+    /* background-color: #64727D;*/
+}
+
+#battery {
+    border-bottom: 3px solid #eb6841;
+}
+
+#battery.charging {
+    color: #5ab738;
+    border-bottom: 3px solid #eb6841;
+}
+
+@keyframes blink {
+    to {
+        background-color: #eb6841;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    border-bottom: 3px solid #eb6841;
+    color: #dc322f;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    border-bottom: 3px solid #75507b;
+}
+
+#memory {
+    border-bottom: 3px solid #6a4a3c;
+}
+
+#network {
+    border-bottom: 3px solid #2980b9;
+}
+
+#network.disconnected {
+    border-bottom: 3px solid #2980b9;
+    color: #dc322f;
+}
+
+#pulseaudio {
+    border-bottom: 3px solid #f1c40f;
+}
+
+#pulseaudio.muted {
+    border-bottom: 3px solid #f1c40f;
+    background: #90b1b1;
+    color: #2a5c45;
+}
+
+#tray {
+    border-bottom: 3px solid #2980b9;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+    border-bottom: 3px solid #2980b9;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    color: #eeeeec;
+    background: transparent;
+    padding: 8px;
+}
+
+#mpd.disconnected {
+    background: transparent;
+}
+
+#mpd.stopped {
+    background: transparent;
+}
+
+#mpd.paused {
+    background: transparent;
+}
+
+#disk {
+    border-bottom: 3px solid #ffce51;
+}
+
+#disk.home {
+    background: rgba(51, 51, 51, 0.5);
+    border-bottom: 3px solid #5ab738;
+}
+
+#custom-pkg {
+    border-bottom: 3px solid #dc322f;
+}
+
+#custom-vpn {
+    border-bottom: 3px solid #2980b9;
+}

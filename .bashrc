@@ -7,6 +7,11 @@ if [ "$EUID" -ne 0 ]
 	else export PS1="\[$(tput bold)\]\[$(tput setaf 9)\][\[$(tput setaf 11)\]ROOT\[$(tput setaf 2)\]@\[$(tput setaf 12)\]$(hostname | awk '{print toupper($0)}') \[$(tput setaf 13)\]\W\[$(tput setaf 9)\]]\[$(tput setaf 15)\]\\$ \[$(tput sgr0)\]"
 fi
 
+# GPG SSH
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+gpg-connect-agent updatestartuptty /bye
+
 #Generic shortcuts:
 alias music="ncmpcpp"
 alias clock="ncmpcpp -s clock"

@@ -25,59 +25,57 @@ col = #00f
 green =  #5ab738
 
 [bar/top]
-; For ThinkPad x220
-;monitor = ${env:MONITOR:LVDS-1}
-; For ThinPax t440s
-monitor = eDP1
-dpi = 135
+dpi = 100
 width = 100%
 ; For ThinkPad x220
 ; height = 19
 ; For ThinkPad t440s
-height = 24
-offset-x = 1%
+height = 26
+offset-x = 0
 offset-y = 0
 ;radius = 6.0
 fixed-center = true
 bottom = false
 
 #background = ${colors.background}
-background = #661b1918
+background = #882B303B
 #foreground = ${colors.foreground}
-foreground = #90d0bb
+foreground = #dedede
 ;70d89a
 
-line-size = 3
+line-size = 4
 line-color = {$xrdb:color1}
 
 border-size = 0
 border-color = #00000000
 
-padding-left = 2
-padding-right = 2
+;padding-left = 2
+;padding-right = 2
 
-module-margin-left = 0
-module-margin-right = 2
+module-spacing-left = 4
+module-spacing-right = 4
 
 ; For ThinkPad x220 or smaller screens
 ;font-0 = NotoSans-Regular:size=6;2
 ; For ThinkPad t440s or FullHD screen
-font-0 = NotoSans-Regular:size=8;2
-font-1 = uniformat:fontformat=truetype:size=8:antialias=false;0
+font-0 = xft:terminus:size=9:antialias=true
+; NotoMono:size=9;2
+font-1 = uniformat:fontformat=truetype:size=10:antialias=false;0
 ; For ThinkPad x220 or smaller screens
 ;font-2 = fontawesome:pixelsize=6;1
 ; For ThinkPad t440s or FullHD screen
-font-2 = fontawesome:pixelsize=7;1
+font-2 = fontawesome:pixelsize=10;1
 
 modules-left = i3 mpd
 modules-center = date
 ; For partition with home and root with or without battery1
 ;modules-right = home filesystem pkg hwmon volume vpncheck battery # battery1
 ; For single root partition
-modules-right = filesystem pkg hwmon volume vpncheck battery battery1
+modules-right = home filesystem pkg volume vpncheck cpu memory battery
 
 tray-position = right
 tray-padding = 0
+tray-background = #333333
 ;tray-transparent = true
 ;tray-background = #0063ff
 
@@ -91,36 +89,21 @@ tray-padding = 0
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-# format-prefix = " "
-# format-prefix-foreground = ${colors.foreground-alt}
-# format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 interval = 25
 
 mount-0 = /
+format-padding = 3
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-mounted-underline = ${colors.green}
+label-mounted-background = #dc333333
+label-mounted-padding = 3
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.green}
+label-unmounted-background = #dc333333
+label-unmounted-padding = 3
 
 [module/home]
 type = internal/fs
@@ -130,28 +113,12 @@ mount-0 = /home
 
 label-mounted = %{F#0a81f5}~%{F-}: %percentage_used%%
 label-mounted-underline = ${colors.primary}
+label-mounted-background = #dc333333
+label-mounted-padding = 3
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-foreground = #333333
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-unmounted-background = #dc333333
+label-unmounted-padding = 3
 
 [module/i3]
 type = internal/i3
@@ -162,19 +129,22 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-padding = 3
+label-mode-foreground = #90d0bb
+label-mode-background = #eeeeee
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused-background = #333333
+label-focused-forground = #ffce51
+label-focused-underline = #ffce51
+label-focused-padding = 3
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 3
+label-unfocused-foreground = #90d0bb
+label-unfocused-underline = #666666
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -184,11 +154,14 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-foreground = #dc322f
+label-urgent-background = #333333
+label-urgent-underline = #dc322f
+label-urgent-padding = 3
 
 [module/mpd]
 type = internal/mpd
+format-foreground = #90d0bb
 format-online = <label-song> <label-time>
 ;format-online-underline = ${colors.green}
 # <icon-prev> <toggle> <icon-next>
@@ -213,84 +186,59 @@ icon-next = 
 label-song =  %artist% - %title%
 label-song-maxlen = 70
 label-song-ellipsis = true
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+label-song-padding = 3
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color1}
+format-prefix = " "
+format-underline = #75507b
+format-background = #dc333333
+format-padding = 3
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color6}
+format-prefix = " "
+format-background = #dc333333
+format-padding = 3
+format-underline = #6a4a3c
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${xrdb:color5}
-;format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-# ramp-signal-0 = 
-# ramp-signal-1 = 
-# ramp-signal-2 = 
-# ramp-signal-3 = 
-# ramp-signal-4 = 
-# ramp-signal-foreground = ${colors.foreground-alt}
+label-connected = "  "
+format-connected = <label-connected> <ramp-signal>
+format-connected-underline = #2980b9
+format-connected-background = #dc333333
+format-connected-padding = 3
+label-disconnected-foreground = #dc322f
+format-disconnected = "⚠ Disconnected"
+format-disconnected-underline = #2980b9
+format-disconnected-background = #dc333333
+format-disconnected-padding = 3
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 
 [module/eth]
 type = internal/network
-interface = enp0s25
+interface = enp6s0
 interval = 3.0
-
-format-connected-underline = ${xrdb:color2}
-;format-connected-underline = ${xrdb:color10}
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-connected-underline = #2980b9
+format-connected-prefix = " "
+format-connected-background = #dc333333
+format-connected-padding = 3
+label-disconnected-foreground = #dc322f
+format-disconnected = "⚠ Disconnected"
+format-disconnected-underline = #2980b9
+format-disconnected-background = #dc333333
+format-disconnected-padding = 3
 
 [module/date]
 type = internal/date
@@ -312,16 +260,16 @@ time = "%H:%M"
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 ; {master,speaker,headphone}-soundcard = default
 ; {master,speaker,headphone}-mixer
 
 ; <label-volume> <label-muted> <ramp-volume> <bar-volume>
 format-volume = <ramp-volume> <label-volume>
-;format-volume-background = ${root.module-background}
+format-volume-underline = #f1c40f
+format-volume-background = #dc333333
+format-volume-padding = 3
 ;format-volume-prefix = " "
-;format-volume-prefix-foreground = ${colors.hl}
-;ramp-volume-foreground = ${colors.foreground-alt}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
@@ -329,9 +277,10 @@ ramp-headphones-0 = 
 ramp-headphones-1 = 
 label-volume = %percentage%%
 label-muted = " "
-label-muted-foreground = ${colors.foreground-alt}
-
-format-volume-underline = ${xrdb:color12}
+label-muted-foreground = #2a5c45
+label-muted-underline = #f1c40f
+label-muted-background = #90b1b1
+label-muted-padding = 3
 mapping = true
 
 [module/battery]
@@ -342,15 +291,21 @@ full-at = 98
 
 #format-charging = Charging... <label-charging>
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${xrdb:color3}
+format-charging-underline = #268bd2
+format-charging-background = #dc333333
+format-charging-padding = 3
 
 format-discharging = <label-discharging>
 #format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #dc322f
+format-discharging-background = #dc333333
+format-discharging-padding = 3
 
 format-full = " "
 ;format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${colors.green}
+format-full-background = #dc333333
+format-full-padding = 3
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -376,15 +331,21 @@ full-at = 98
 
 #format-charging = Charging... <label-charging>
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${xrdb:color3}
+format-charging-underline = #268bd2
+format-charging-background = #dc333333
+format-charging-padding = 3
 
 format-discharging = <label-discharging>
 #format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #dc322f
+format-discharging-background = #dc333333
+format-discharging-padding = 3
 
 format-full = " "
 ;format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${colors.green}
+format-full-background = #dc333333
+format-full-padding = 3
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -432,6 +393,8 @@ interval = 2
 
 format-prefix = " "
 format-underline = ${xrdb:color1}
+format-background = #dc333333
+format-padding = 3
 
 
 [settings]
@@ -450,8 +413,10 @@ type = custom/script
 interval = 1200
 format = <label>
 format-underline = #dc322f
+format-background = #dc333333
+format-padding = 3
 label = "%output:0:30%"
-exec = ~/.config/polybar/pkg.sh
+exec = pkg
 
 [module/vpncheck]
 type = custom/script
@@ -459,4 +424,6 @@ exec = pgrep openvpn
 interval = 5
 label = vpn
 format-underline = #268bd2
+format-background = #dc333333
+format-padding = 3
 format-prefix = " "

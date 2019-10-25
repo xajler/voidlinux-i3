@@ -1,0 +1,22 @@
+total 8.0K
+drwxr-xr-x 2 root root 4.0K Oct 25 19:31 .
+drwxr-xr-x 4 root root 4.0K Feb 17  2019 ..
+lrwxrwxrwx 1 root root   13 Jul 15 18:51 acpid -> /etc/sv/acpid
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty1 -> /etc/sv/agetty-tty1
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty2 -> /etc/sv/agetty-tty2
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty3 -> /etc/sv/agetty-tty3
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty4 -> /etc/sv/agetty-tty4
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty5 -> /etc/sv/agetty-tty5
+lrwxrwxrwx 1 root root   19 Oct 25 19:31 agetty-tty6 -> /etc/sv/agetty-tty6
+lrwxrwxrwx 1 root root   12 Jul 15 21:29 alsa -> /etc/sv/alsa
+lrwxrwxrwx 1 root root   14 Jul 15 22:37 autofs -> /etc/sv/autofs
+lrwxrwxrwx 1 root root   18 Sep 28 15:08 consolekit -> /etc/sv/consolekit
+lrwxrwxrwx 1 root root   12 Jul 15 21:29 dbus -> /etc/sv/dbus
+lrwxrwxrwx 1 root root   14 Jul 15 18:51 dhcpcd -> /etc/sv/dhcpcd
+lrwxrwxrwx 1 root root   14 Jul 15 22:37 docker -> /etc/sv/docker
+lrwxrwxrwx 1 root root   15 Sep 28 15:08 elogind -> /etc/sv/elogind
+lrwxrwxrwx 1 root root   12 Jul 15 18:51 sshd -> /etc/sv/sshd
+lrwxrwxrwx 1 root root   11 Jul 15 21:30 tlp -> /etc/sv/tlp
+lrwxrwxrwx 1 root root   13 Oct 25 19:31 udevd -> /etc/sv/udevd
+lrwxrwxrwx 1 root root   13 Jul 15 18:51 uuidd -> /etc/sv/uuidd
+lrwxrwxrwx 1 root root   22 Jul 15 21:29 wpa_supplicant -> /etc/sv/wpa_supplicant

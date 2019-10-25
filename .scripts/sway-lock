@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# take screenshot
+grim /tmp/screenshot.png
+
+# blur it
+convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+rm /tmp/screenshot.png
+
+# lock the screen
+swaylock -f -i /tmp/screenshotblur.png
